@@ -1,0 +1,80 @@
+<html>
+<head>
+<style>
+#b
+{
+margin-left:13px;
+height:50px;
+width:50px;
+border-radius:50px;
+font-size: 20px;
+border:black;
+}
+body{
+    background-image: linear-gradient(black,grey,black,grey,black);
+}
+fieldset{
+    margin-right:450px;
+    border:black;
+    margin-left:450px;
+    padding:35px;
+    background-color:rgb(25, 20, 20);
+    border-radius: 20px;
+}
+</style>
+<script>
+let expression =" ";
+function handle(value)
+{
+switch(value)
+{
+case 'clear':
+expression="";
+break;
+case '=':
+try{
+const result=eval(expression);
+expression=result.toString();
+}
+catch(error)
+{
+expression="error";
+}
+break;
+default:
+expression+=value;
+break;
+}
+document.getElementById('result').value=expression;
+}
+
+</script>
+</head>
+<body style="margin-top:70px">
+<fieldset>
+<input type="text" id="result" style="height:50px;width:255px;margin-left:12px;font-size:25px"><br><br><br>
+<div id="calculator">
+<button id="b" onclick="handle('9')">9</button>
+<button id="b" onclick="handle('8')">8</button>
+<button id="b" onclick="handle('7')">7</button>
+<button id="b" style="background-color:orange" onclick="handle('clear')">c</button>
+<br><br>
+<button id="b" onclick="handle('6')">6</button>
+<button id="b" onclick="handle('5')">5</button>
+<button id="b" onclick="handle('4')">4</button>
+<button id="b" style="background-color:rgb(35, 35, 89);color:white" onclick="handle('+')">+</button>
+<br><br>
+<button id="b" onclick="handle('3')">3</button>
+<button id="b" onclick="handle('2')">2</button>
+<button id="b" onclick="handle('1')">1</button>
+<button id="b" style="background-color:rgb(35, 35, 89);color:white" onclick="handle('-')">-</button>
+<br><br>
+<button id="b" onclick="handle('0')">0</button>
+<button id="b" style="background-color:rgb(35, 35, 89);color:white" onclick="handle('*')">*</button>
+<button id="b" style="background-color:rgb(35, 35, 89);color:white" onclick="handle('/')">/</button>
+<button id="b" style="background-color:orange" onclick="handle('=')">=</button>
+<br>
+</div>
+</fieldset>
+</body>
+</html>
